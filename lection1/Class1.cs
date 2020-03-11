@@ -6,7 +6,8 @@ public static void Main([] string args)
 {
 for (int = 0; i < 10; i++)
 {
-Console.WriteLine(i);
+Console.WriteLine(i*2);
 }
+Console.Read();
 }
 }
