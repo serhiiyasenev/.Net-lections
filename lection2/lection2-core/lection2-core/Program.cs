@@ -14,6 +14,7 @@ namespace lection2_core
                 "123", "234", "345", "456", "567", "xxx"
             };
             var testClassInt = new MyClass<int>(5) { 1, 2, 3, 4, 5 };
+            var test2ClassInt = new MyClass<int>(5) { 1, 2, 3, 4, 5 };
         }
     }
 
