@@ -15,6 +15,33 @@ namespace ConsoleApp11
                 "123", "234", "345", "456", "567", "xxx"
             };
 
+            Console.WriteLine("Enumerable.Range Enumerable.Range Enumerable.Range");
+
+            Console.WriteLine(
+                Enumerable.Range(0, 101)
+                .Where(el => el % 2 == 0)
+                .Select(s => s.ToString())
+                .Aggregate((a,b) => a + ", " + b));
+
+
+            Console.WriteLine("Enumerable.Range Enumerable.Range Enumerable.Range");
+
+
+            var vectors = new[]
+            {
+                (10, 20),
+                (100, 30),
+                (-10, 400),
+                (20, 50)
+            };
+
+
+            var sum = vectors.Aggregate((x,y) => (x.Item1 + y.Item1, x.Item2 + y.Item2));
+
+            Console.WriteLine(sum);
+
+            Console.ReadKey();
+
             string element = testClassString[2];
 
             var testClassInt = new MyClass<int>(5) { 1, 2, 3, 4, 5 };
@@ -43,7 +70,6 @@ namespace ConsoleApp11
             button.OnClick += () => Console.WriteLine("Button was clicked");
 
             button.Clicked();
-
 
           void OnAdd(object sender, EventArgs e)
           {
