@@ -44,12 +44,13 @@ namespace ConsoleApp11
 
             string element = testClassString[2];
 
+            
             var testClassInt = new MyClass<int>(5) { 1, 2, 3, 4, 5 };
             bool removed = testClassInt.Remove(4);
 
             var testClassIntWithOut4 = testClassInt.ToList();
 
-            var pairedNumbers = testClassInt.Filter(i => i % 2 == 0);
+            var pairedNumbers = testClassIntWithOut4.Filter(i => i % 2 == 0);
 
             Console.WriteLine("List is created!");
 
@@ -160,8 +161,9 @@ namespace ConsoleApp11
                 for (var i = start; i <= _arrayIndex - 1; i++)
                 {
                     _array[i] = _array[i+1];
-                    _arrayIndex --;
                 }
+                 _arrayIndex--;
+                Array.Resize(ref _array, _arrayIndex + 1);
                 return true;
             }
             else
@@ -195,7 +197,7 @@ namespace ConsoleApp11
 
         public void Dispose()
         {
-            _array = null;
+            //_array = null;
         }
     }
 
