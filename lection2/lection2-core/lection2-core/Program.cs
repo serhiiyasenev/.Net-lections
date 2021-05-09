@@ -61,7 +61,7 @@ namespace ConsoleApp11
 
             var testClassString2 = new MyClass<string>(5);
 
-            testClassString2.OnAdd += new EventHandler(OnAdd);
+            testClassString2.OnAdd += OnAdd;
             testClassString2.Add("1");
 
             var button = new Button();
@@ -162,14 +162,12 @@ namespace ConsoleApp11
                 {
                     _array[i] = _array[i+1];
                 }
-                 _arrayIndex--;
+                _arrayIndex--;
                 Array.Resize(ref _array, _arrayIndex + 1);
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
 
         }
 
@@ -197,7 +195,8 @@ namespace ConsoleApp11
 
         public void Dispose()
         {
-            //_array = null;
+            _array = null;
+            // and ?
         }
     }
 
@@ -212,12 +211,12 @@ namespace ConsoleApp11
 
     public class Window
     {
-        private Button _button = null;
+        private readonly Button _button;
 
         public event Action OnClick
         {
-            add { _button.OnClick += value;}
-            remove { _button.OnClick -= value;}
+            add => _button.OnClick += value;
+            remove => _button.OnClick -= value;
         }
 
         public Window(Button b)
@@ -233,11 +232,9 @@ namespace ConsoleApp11
             Console.WriteLine("Filter started!");
             foreach (var element in collection)
             {
-                if (predicate(element))
-                {
-                    Console.WriteLine($"Retuning element `{element}`");
-                    yield return element;
-                }
+                if (!predicate(element)) continue;
+                Console.WriteLine($"Retuning element `{element}`");
+                yield return element;
             }
         }
     }
