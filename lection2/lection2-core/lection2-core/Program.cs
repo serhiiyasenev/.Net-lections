@@ -134,7 +134,6 @@ namespace ConsoleApp11
                 }
 
             }
-
         }
 
         public void Add (T obj)
@@ -168,7 +167,6 @@ namespace ConsoleApp11
             }
 
             return false;
-
         }
 
         public bool MoveNext()
@@ -186,7 +184,10 @@ namespace ConsoleApp11
 
         public T Current => _array[_i];
 
-        public IEnumerator<T> GetEnumerator() => this;
+        public IEnumerator<T> GetEnumerator()
+        {
+            return this;
+        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
@@ -238,6 +239,4 @@ namespace ConsoleApp11
             }
         }
     }
-
-
 }
